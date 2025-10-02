@@ -14,6 +14,12 @@ function moje_sablona_nacti_scripty() {
         array(),
         filemtime(get_template_directory() . '/style.css')
     );
+    wp_enqueue_style(
+        'moje-styly',
+        get_template_directory_uri() . '/footer.css',
+        array(),
+        filemtime(get_template_directory() . '/footer.css')
+    );
 
     // JavaScript
     wp_enqueue_script(

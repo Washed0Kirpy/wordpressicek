@@ -1,31 +1,38 @@
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
-    <head>
-        <meta charset="<?php bloginfo( 'charset' ); ?>">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title><?php  
-            if ( is_front_page() ) { // Pokud je to domovská stránka (statická stránka)
-                echo get_the_title( get_option( 'page_on_front' ) ); // Získá název statické domovské stránky
+<head>
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <?php  
+            if ( is_front_page() ) {
+                echo get_the_title( get_option( 'page_on_front' ) );
             } else {
-                wp_title( '|', true, 'right' ); // Standardní titulek pro ostatní stránky
+                wp_title( '|', true, 'right' );
             }
-         ?></title>
-         <link rel="stylesheet" href="<?php echo $GLOBALS['moje_sablona_url']; ?>/style.css">
-        
-    </head>
-    <body>
-        <?php
-            get_header();
         ?>
+    </title>
 
-        <main id="primary" class="site-main">
-            <?php
-                the_content();
-            ?>
-        </main>
+    <?php wp_head(); ?>
+</head>
+<body <?php body_class(); ?>>
 
+    <?php get_header(); ?>
+
+    <main id="primary" class="site-main">
         <?php
-            get_footer();
+            if ( have_posts() ) :
+                while ( have_posts() ) : the_post();
+                    the_content();
+                endwhile;
+            else :
+                echo '<p>Obsah nebyl nalezen.</p>';
+            endif;
         ?>
-    </body>
+    </main>
+
+    <?php get_footer(); ?>
+
+    <?php wp_footer(); ?>
+</body>
 </html>
