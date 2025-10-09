@@ -1,33 +1,69 @@
-footer{
+footer {
+    position: relative;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    padding: 120px 20px 40px;
+    overflow: hidden;
+  }
+  
+  /* Vlna nahoře */
+  .footer-waves {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 200px;
-    background: #202020;
-    color: white;
-
-    .wrapper{
-        display: flex;
-        flex-direction: column;
-        margin: auto;
-        max-width: 1300px;
-        height: 100%;
-
-        wrapper-content{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 36px;
-            padding: 36px 6px;
-            /*height: 100%;*/
-            h2{
-                font-family: Arial, Helvetica, sans-serif;
-                font-weight: bold;
-            }
-            p{
-                font-family: Arial, Helvetica, sans-serif;
-                text-align: center;
-            }
-
-        }
-    }
-}
+    height: 180px;
+    overflow: hidden;
+    z-index: 1;
+    transform: rotate(0deg); /* otočí vlnu vzhůru nohama */
+    background-color: rgb(255, 255, 255);
+  }
+  
+  /* Společné nastavení SVG vln */
+  .footer-waves svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    animation: waveMove 12s linear infinite;
+  }
+  
+  /* První vlna – pomalejší, světlejší */
+  .wave1 {
+    opacity: 1;
+    animation-duration: 20s;
+  }
+  
+  /* Druhá vlna – rychlejší, tmavší, opačný směr */
+  .wave2 {
+    opacity: 1;
+    animation-duration: 10s;
+    animation-direction: reverse;
+  }
+  
+  /* Animace posuvu pozadí (prolínání) */
+  @keyframes waveMove {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  
+  /* Obsah footeru nad vlnami */
+  .footer-content {
+    position: relative;
+    z-index: 2;
+    margin-top: 80px; /* aby text nezačínal hned u vlny */
+  }
+  
+  .footer-social a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.3rem;
+    transition: color 0.3s;
+  }
+  
+  .footer-social a:hover {
+    color: #808080;
+  }
+  

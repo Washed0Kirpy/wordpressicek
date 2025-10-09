@@ -4,7 +4,7 @@
     <div class="wrapper">
             
         <div class="wrapper-logo">
-            <img src="/img/availability-svgrepo-com.svg" alt="">
+            <img src="wp-content/themes/vlastni_sablona/1001-2_515a7737-removebg-preview.png" alt="">
         </div>
             
         <div class="wrapper-hamburger">
